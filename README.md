@@ -12,7 +12,29 @@ an image caching service as the main use-case.
 how to run
 ----------
 
-Install the program with ```$ go install``` and then run it with: ```$ tics```.
+Install the program with ```$ go install``` and then run it with: ```$ /pth/to/go/bin/tics```.
+
+how to use
+----------
+
+The tics service is using a base64 encoded url including width and height resizing information:
+ 
+ * url : https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png
+ * width: 20
+ * height: 20
+
+should be converted into the following pattern:```<url>?w=<width>&h=<height>```. Finally run all this through a base64 encoder and you are good to go:
+
+  * https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png?w=20&h=20
+  * aHR0cHM6Ly93d3cud2lraXBlZGlhLm9yZy9wb3J0YWwvd2lraXBlZGlhLm9yZy9hc3NldHMvaW1nL1dpa2lwZWRpYS1sb2dvLXYyLnBuZz93PTIwJmg9MjA=
+
+Now you have a nice base64 encoded image path and some resizing information. Call the service with
+ 
+ * ```localhost:8080/?i=<base64encoded...>```
+ * localhost:8080/?i=aHR0cHM6Ly93d3cud2lraXBlZGlhLm9yZy9wb3J0YWwvd2lraXBlZGlhLm9yZy9hc3NldHMvaW1nL1dpa2lwZWRpYS1sb2dvLXYyLnBuZz93PTIwJmg9MjA=
+
+and you get a nice small wikipedia image.
+
 
 run tests
 ---------
