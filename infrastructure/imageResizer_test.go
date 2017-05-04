@@ -15,7 +15,7 @@ func Test_Resize_should_not_resize_smaller_image(t *testing.T) {
 
 	resizer := MNResizer{}
 	for _, tt := range testImages {
-		actual, err := resizer.resize(tt, 100, 200)
+		actual, err := resizer.Resize(tt, 100, 200)
 
 		if err != nil {
 			t.Error("Expected no error, got error:", err.Error())
@@ -41,7 +41,7 @@ func Test_Resize_should_resize_bigger_image_to_target_w_and_h(t *testing.T) {
 
 	resizer := MNResizer{}
 	for _, tt := range testImages {
-		actual, err := resizer.resize(tt, 100, 200)
+		actual, err := resizer.Resize(tt, 100, 200)
 
 		if err != nil {
 			t.Error("Expected no error, got error:", err.Error())

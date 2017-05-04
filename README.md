@@ -39,7 +39,7 @@ and you get a nice small wikipedia image.
 run tests
 ---------
 
-```cd /path/to/tics``` and then ```go test```.
+```cd /path/to/tics``` and then ```go test ./...```.
 
 License
 -------

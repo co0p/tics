@@ -3,7 +3,7 @@ package infrastructure
 import (
 	"testing"
 
-	"github.com/co0p/icc/usecases"
+	"github.com/co0p/tics/usecases"
 )
 
 func TestBase64Decoder_should_decode_and_parse_simple_hash(t *testing.T) {
