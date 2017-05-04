@@ -12,7 +12,7 @@ func NewMemoryStorage() *MemoryStorage {
 	return &MemoryStorage{make(map[string]image.Image)}
 }
 
-// Add add a new image to the storage under the key haash
+// Add adds a new image to the storage under the key hash
 func (ms *MemoryStorage) Add(hash string, image image.Image) {
 	ms.thumbnails[hash] = image
 }

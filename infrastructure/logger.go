@@ -5,7 +5,7 @@ import (
 )
 
 // ConsoleLogger simply logs to the console
-type ConsoleLogger int
+type ConsoleLogger struct{}
 
 // Log logs the given msg
 func (l ConsoleLogger) Log(msg string) {

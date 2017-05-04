@@ -10,7 +10,7 @@ import (
 // MNResizer is an image resizer using the Mitchell-Netravali algorithm
 type MNResizer struct{}
 
-func (r *MNResizer) resize(img image.Image, w, h int) (image.Image, error) {
+func (r MNResizer) Resize(img image.Image, w, h int) (image.Image, error) {
 
 	if w <= 0 && h <= 0 {
 		return nil, errors.New("width and height should be positive")

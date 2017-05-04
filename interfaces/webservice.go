@@ -11,15 +11,17 @@ type ThumbnailInteractor interface {
 	Get(hash string) (image.Image, error)
 }
 
+// WebserviceHandler needs a ThumbnailInteractor to get the thumbnail generation going
 type WebserviceHandler struct {
 	ThumbnailInteractor ThumbnailInteractor
 }
 
+//GetThumbnail processes the incoming request and returns a resized image, the error otherwise
 func (handler WebserviceHandler) GetThumbnail(w http.ResponseWriter, req *http.Request) {
 
-	hash := req.URL.Query().Get("thumbnail")
+	hash := req.URL.Query().Get("i")
 	if len(hash) == 0 {
-		http.Error(w, "Missing thumbnail query parameter", http.StatusBadRequest)
+		http.Error(w, "Missing i query parameter", http.StatusBadRequest)
 		return
 	}
 
