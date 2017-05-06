@@ -8,6 +8,6 @@ import (
 type ConsoleLogger struct{}
 
 // Log logs the given msg
-func (l ConsoleLogger) Log(msg string) {
-	fmt.Println(msg)
+func (l ConsoleLogger) Log(format string, args ...interface{}) {
+	fmt.Printf(format, args)
 }
