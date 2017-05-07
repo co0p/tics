@@ -29,6 +29,7 @@ func Test_Resize_should_not_resize_smaller_image(t *testing.T) {
 		}
 	}
 }
+
 func Test_Resize_should_resize_bigger_image_to_target_w_and_h(t *testing.T) {
 
 	testImages := []image.Image{
