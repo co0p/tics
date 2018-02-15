@@ -9,7 +9,7 @@ import (
 // ImageFetcher implements the ImageFetcher usecases interface
 type ImageFetcher struct{}
 
-// Fetch fetches and returns the image found unter url, error otherwise
+// Fetch fetches and returns the image found at url, error otherwise
 func (i ImageFetcher) Fetch(path string) (image.Image, error) {
 	resp, err := http.Get(path)
 	if err != nil {

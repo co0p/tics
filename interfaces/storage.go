@@ -6,7 +6,7 @@ import (
 	"github.com/co0p/tics/domain"
 )
 
-// StorageHandler allows us to swap in different implementations of the acutual storage method
+// StorageHandler allows us to swap in different implementations of the actual storage method
 type StorageHandler interface {
 	Add(hash string, image image.Image)
 	Get(hash string) (image.Image, bool)

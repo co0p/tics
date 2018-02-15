@@ -54,3 +54,29 @@ func Test_Resize_should_resize_bigger_image_to_target_w_and_h(t *testing.T) {
 		}
 	}
 }
+
+func Test_Resize_should_handle_negativ_w_and_h(t *testing.T) {
+
+	resizer := MNResizer{}
+	img := image.NewRGBA(image.Rect(0, 0, 100, 200))
+
+	cases := []struct {
+		Description string
+		Width       int
+		Height      int
+	}{
+		{"w is negative", -1, 0},
+		{"h is negative", 0, -1},
+		{"h and w are negative", -1, -1},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.Description, func(t *testing.T) {
+			_, err := resizer.Resize(img, tc.Width, tc.Height)
+
+			if err == nil {
+				t.Errorf("Expected error, got %s", err)
+			}
+		})
+	}
+}

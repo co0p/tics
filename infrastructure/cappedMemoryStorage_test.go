@@ -13,7 +13,7 @@ func Test_Add_should_return_image_put_under_key(t *testing.T) {
 		"Hash3": image.NewRGBA(image.Rect(0, 0, 20, 20)),
 	}
 
-	storage := NewMemoryStorage()
+	storage := NewCappedMemoryStorage(10)
 
 	for k, expectedItem := range data {
 		storage.Add(k, expectedItem)
@@ -34,7 +34,7 @@ func Test_Get_should_return_the_same_image_for_same_key(t *testing.T) {
 		"Hash3": image.NewRGBA(image.Rect(0, 0, 20, 20)),
 	}
 
-	storage := NewMemoryStorage()
+	storage := NewCappedMemoryStorage(10)
 	for k, v := range data {
 		storage.Add(k, v)
 	}
@@ -50,5 +50,19 @@ func Test_Get_should_return_the_same_image_for_same_key(t *testing.T) {
 		if actualImage != expectedImage {
 			t.Errorf("Expected images to be equal, %v != %v", expectedImage, actualImage)
 		}
+	}
+}
+
+func TestCappedMemoryStorage_should_return_false_if_no_image_was_found(t *testing.T) {
+	storage := NewCappedMemoryStorage(10)
+	storage.Add("Hash", image.NewRGBA(image.Rect(0, 0, 20, 20)))
+
+	nonExistingKey := "DIFFERENT_HASH"
+	thumbnail, found := storage.Get(nonExistingKey)
+	if found {
+		t.Errorf("expected Get(%s) to return found=false, got %t", nonExistingKey, found)
+	}
+	if thumbnail != nil {
+		t.Errorf("expected Get(%s) to return nil, got %t", nonExistingKey, thumbnail)
 	}
 }

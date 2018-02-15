@@ -12,8 +12,15 @@ an image caching service as the main use-case.
 how to run
 ----------
 
- * Go to ```$ cd $GO/src/github.com/co0p/tics/cmd/tics-webserver``` and then install the program with ```$ go install```. 
- * Run it with: ```$ /pth/to/go/bin/tics-websever```.
+install the dependencies, build the binary and start it
+
+```bash
+$ dep ensure
+$ go build cmd/tics/tics.go
+$ ./tics 
+```
+
+
 
 how to use
 ----------
