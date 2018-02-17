@@ -8,7 +8,7 @@ import (
 	"github.com/co0p/tics/interfaces"
 )
 
-func TestStorageAdd(t *testing.T) {
+func TestAddToDelegateToStorage(t *testing.T) {
 	mockStorage := MockStorage{
 		AddFn: func(hash string, image image.Image) {},
 		GetFn: func(hash string) (image.Image, bool) { return nil, false },
@@ -22,7 +22,7 @@ func TestStorageAdd(t *testing.T) {
 	}
 }
 
-func TestStorageGetSuccess(t *testing.T) {
+func TestGetToReturnImage(t *testing.T) {
 	imageHash := "123123123"
 	img := image.NewRGBA(image.Rect(0, 0, 0, 0))
 	mockStorage := MockStorage{
@@ -49,7 +49,7 @@ func TestStorageGetSuccess(t *testing.T) {
 	}
 }
 
-func TestStorageGetFailed(t *testing.T) {
+func TestGetToReturnNotFoundIfImageWasNotFound(t *testing.T) {
 	mockStorage := MockStorage{
 		GetFn: func(hash string) (image.Image, bool) {
 			return nil, false
