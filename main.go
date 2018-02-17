@@ -36,8 +36,8 @@ func main() {
 	if len(port) == 0 {
 		port = "8080"
 	}
-	interactor.Logger.Log("starting server on port %s ...\n", port)
-	if http.ListenAndServe(port, nil) != nil {
+	interactor.Logger.Log("starting server on port %v ...\n", port)
+	if http.ListenAndServe(":"+port, nil) != nil {
 		log.Fatalln("failed to start server")
 	}
 }
