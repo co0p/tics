@@ -1,7 +1,9 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/co0p/tics/infrastructure"
 	"github.com/co0p/tics/interfaces"
@@ -30,7 +32,12 @@ func main() {
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
 		webserviceHandler.GetThumbnail(res, req)
 	})
-	port := ":8080"
+	port := os.Getenv("TICS_PORT")
+	if len(port) == 0 {
+		port = "8080"
+	}
 	interactor.Logger.Log("starting server on port %s ...\n", port)
-	http.ListenAndServe(port, nil)
+	if http.ListenAndServe(port, nil) != nil {
+		log.Fatalln("failed to start server")
+	}
 }

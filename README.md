@@ -16,11 +16,16 @@ install the dependencies, build the binary and start it
 
 ```bash
 $ dep ensure
-$ go build cmd/tics/tics.go
+$ go build
 $ ./tics 
 ```
 
+To set the port, export the environment variable "TICS_PORT"
 
+```bash
+$ export TICS_PORT="8888"
+$ ./tics # will start listening on port 8888
+```
 
 how to use
 ----------
