@@ -1,3 +1,6 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/co0p/tics)](https://goreportcard.com/report/github.com/co0p/tics)
+
+
 TICS - Thumbnail Image Caching Service
 =====================================
 
